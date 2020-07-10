@@ -7,7 +7,7 @@
 // @include foundation-accordion-menu;
 // @include foundation-drilldown-menu;
 // @include foundation-dropdown-menu;
-// @include foundation-off-canvas;
+@include foundation-off-canvas;
 // @include foundation-reveal;
 // @include foundation-sticky;
 // @include foundation-title-bar;
@@ -30,5 +30,12 @@
   &:hover {
     background-color: #fff;
     color: #000;
+  }
+}
+
+.ba-container {
+  @include breakpoint(small down) {
+    padding-left: 33px;
+    padding-right: 33px;
   }
 }

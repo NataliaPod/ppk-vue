@@ -12,13 +12,25 @@
       </li>
     </ul>
 
-    <button class="menu-icon hide-for-medium"></button>
+    <button class="menu-icon hide-for-medium" @click="toggleMenu"></button>
   </nav>
 </template>
 
 <script>
+import { eventBus } from "@/main.js";
+
 export default {
   name: "Nav",
+  data() {
+    return {
+      isMenuOpen: true
+    };
+  },
+  methods: {
+    toggleMenu() {
+      eventBus.$emit("toggleMenu");
+    }
+  }
 };
 </script>
 
