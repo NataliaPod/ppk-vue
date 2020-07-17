@@ -1,5 +1,5 @@
 <template>
-  <section class="ba-section">
+  <section class="ba-section ba-section--about">
     <div class="row column ba-container">
       <h2 class="ba-section__title ba-section__title--about">{{ section.title }}</h2>
       <div class="row">
@@ -67,32 +67,6 @@ export default {
         bottom: 13%;
       }
     }
-  }
-}
-
-.ba-section {
-  padding: 44px 0;
-
-  @include breakpoint(medium) {
-    padding: 90px 0 78px;
-  }
-}
-.ba-section__title {
-  margin-bottom: 29px;
-
-  &--about {
-    @include breakpoint(medium) {
-      margin-bottom: 0;
-    }
-  }
-
-  &:after {
-    content: "";
-    display: block;
-    height: 7px;
-    width: 253px;
-    background: $primary-color;
-    margin-top: 10px;
   }
 }
 </style>

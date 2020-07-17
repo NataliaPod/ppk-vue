@@ -44,7 +44,14 @@
     ]
   },
   "gallery": {
-    "title": "Галерея"
+    "title": "Галерея",
+    "gallery": [
+      "/img/home-page/2001.jpg",
+      "/img/home-page/2001.jpg",
+      "/img/home-page/2001.jpg",
+      "/img/home-page/2001.jpg",
+      "/img/home-page/intro.jpg"
+    ]
   },
   "partners": {
     "title": "Партнери ППК"
