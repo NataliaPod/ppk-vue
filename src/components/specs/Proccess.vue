@@ -1,5 +1,5 @@
 <template>
-  <section class="ba-section">
+  <section class="ba-section padding-bottom-0">
     <div class="row column ba-container">
       <h2 class="ba-section__title">{{ section.title }}</h2>
     </div>
@@ -13,10 +13,7 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle cx="60.5" cy="60.5" r="60.5" />
-        <path
-          d="M52.6667 44.6667V77.3334L78.3334 61.0001L52.6667 44.6667Z"
-          fill="currentColor"
-        />
+        <path d="M52.6667 44.6667V77.3334L78.3334 61.0001L52.6667 44.6667Z" fill="currentColor" />
       </svg>
 
       <img src="/img/specs/proccess.jpg" alt="proccess" />
@@ -29,7 +26,7 @@ import GLightbox from "glightbox";
 
 export default {
   props: {
-    section: { type: Object, default: null },
+    section: { type: Object, default: null }
   },
   data() {
     return {};
@@ -38,7 +35,7 @@ export default {
   methods: {},
   mounted() {
     const lightbox = GLightbox();
-  },
+  }
 };
 </script>
 
@@ -50,6 +47,11 @@ export default {
   position: relative;
   color: $black;
   fill: white;
+
+  img {
+    display: block;
+    width: 100%;
+  }
 
   &:hover {
     color: white;
