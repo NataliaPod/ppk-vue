@@ -1,7 +1,7 @@
 <template>
   <div class="off-canvas-wrapper">
     <div
-      v-bind:class="{ 'is-open' : isMenuOpen}"
+      v-bind:class="{ 'is-open': isMenuOpen }"
       class="off-canvas position-left"
       id="offCanvas"
       data-off-canvas
@@ -30,17 +30,28 @@ import { eventBus } from "@/main.js";
 export default {
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
     };
   },
   components: {
     "v-header": Header,
     Footer,
-    MobNav
+    MobNav,
   },
   created() {
     eventBus.$on("toggleMenu", () => (this.isMenuOpen = !this.isMenuOpen));
-  }
+  },
+  metaInfo: {
+    title: "Полтавський політехнічний коледж",
+    titleTemplate: " %s | Полтавський політехнічний коледж",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Більше 20 тисяч висококваліфікованих фахівців для різних галузей господарства України",
+      },
+    ],
+  },
 };
 </script>
 

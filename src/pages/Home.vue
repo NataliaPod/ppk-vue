@@ -21,24 +21,33 @@ export default {
   data() {
     return {
       title: "Home page",
-      sections: null
+      sections: null,
     };
   },
   components: {
     Intro,
     About,
     Specs,
-    Gallery
+    Gallery,
   },
 
   created() {
     fetch("data/home-page.json")
-      .then(result => result.json())
-      .then(data => {
+      .then((result) => result.json())
+      .then((data) => {
         console.log(data);
 
         this.sections = data;
       });
-  }
+  },
+  metaInfo: {
+    title: "Головна",
+    meta: [
+      {
+        name: "description",
+        content: "Вітаємо переможців Всеукраїнського чемпіонату",
+      },
+    ],
+  },
 };
 </script>

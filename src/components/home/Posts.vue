@@ -1,23 +1,31 @@
 <template>
   <section class="ba-section">
     <div class="row column">
-      <h2 class="ba-section__title">{{section.title}}</h2>
+      <h2 class="ba-section__title">{{ section.title }}</h2>
     </div>
     <div class="row" v-if="posts.length > 0">
-      <div class="column small-12 medium-6 large-6" v-for="(post, i) in posts" :key="i">
+      <div
+        class="column small-12 medium-6 large-6"
+        v-for="(post, i) in posts"
+        :key="i"
+      >
         <article class="ba-post">
-          <a :href="post.link">
+          <router-link :to="`/blog/${post.slug}`">
             <img
               v-if="post._embedded['wp:featuredmedia']"
               class="ba-post__img-link"
-              :src="post._embedded['wp:featuredmedia'][0].media_details.sizes['post-thumbnail'].source_url"
+              :src="
+                post._embedded['wp:featuredmedia'][0].media_details.sizes[
+                  'post-thumbnail'
+                ].source_url
+              "
               :alt="post.title.rendered"
             />
             <img v-else src="/img/home-page/intro.jpg" alt />
-          </a>
+          </router-link>
           <div class="ba-post__body">
             <h3 class="ba-post__title">
-              <a :href="post.link" target="_blank">{{post.title.rendered}}</a>
+              <a :href="post.link" target="_blank">{{ post.title.rendered }}</a>
             </h3>
             <div class="ba-post__excerpt" v-html="post.excerpt.rendered"></div>
             <div class="ba-post__footer">
@@ -40,7 +48,7 @@
                       fill="#D7D7D7"
                     />
                   </svg>
-                  <time>{{post.date}}</time>
+                  <time>{{ post.date }}</time>
                 </span>
                 <span>
                   <svg
@@ -55,7 +63,7 @@
                       fill="#D7D7D7"
                     />
                   </svg>
-                  {{post._embedded.author[0].name}}
+                  {{ post._embedded.author[0].name }}
                 </span>
               </div>
               <!-- /.ba-post__meta -->
@@ -70,7 +78,13 @@
     </div>
     <!-- /.row -->
     <div class="text-center ba-load-more-wrap">
-      <button v-if="page < 10" class="ba-button ba-button--fill" @click="loadMore">Показати більше</button>
+      <button
+        v-if="page < 10"
+        class="ba-button ba-button--fill"
+        @click="loadMore"
+      >
+        Показати більше
+      </button>
     </div>
   </section>
 </template>
@@ -82,15 +96,15 @@ export default {
     return {
       posts: [],
       page: 1,
-      perPage: 4
+      perPage: 4,
     };
   },
   methods: {
     getPosts() {
       const postsUrl = `https://www.zavtra.in.ua/wp-json/wp/v2/posts?filter[cat]=you-camp&_embed&per_page=${this.perPage}&page=${this.page}`;
       fetch(postsUrl)
-        .then(result => result.json())
-        .then(data => {
+        .then((result) => result.json())
+        .then((data) => {
           console.log(data);
           this.posts.push(...data);
         });
@@ -98,11 +112,20 @@ export default {
     loadMore() {
       this.page++;
       this.getPosts();
-    }
+    },
   },
   mounted() {
     this.getPosts();
-  }
+  },
+  metaInfo: {
+    title: "Блог",
+    meta: [
+      {
+        name: "description",
+        content: "Вітаємо переможців Всеукраїнського чемпіонату",
+      },
+    ],
+  },
 };
 </script>
 

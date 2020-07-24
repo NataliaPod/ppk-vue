@@ -1,14 +1,8 @@
 <template>
   <nav class="ba-nav">
     <ul class="menu show-for-medium">
-      <li>
-        <router-link to="/">Головна</router-link>
-      </li>
-      <li>
-        <router-link to="/vykladachi">Викладачі</router-link>
-      </li>
-      <li>
-        <router-link to="/spetcіalіzatsii">Спеціалізаціі</router-link>
+      <li v-for="(link, i) in routes" :key="i">
+        <router-link :to="link.path">{{ link.name }}</router-link>
       </li>
     </ul>
 
@@ -18,19 +12,18 @@
 
 <script>
 import { eventBus } from "@/main.js";
+import { routes } from "@/router/index.js";
 
 export default {
   name: "Nav",
   data() {
-    return {
-      isMenuOpen: true
-    };
+    return { routes: routes, isMenuOpen: true };
   },
   methods: {
     toggleMenu() {
       eventBus.$emit("toggleMenu");
-    }
-  }
+    },
+  },
 };
 </script>
 
